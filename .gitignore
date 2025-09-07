@@ -1,0 +1,13 @@
+# Ignore compiled class files
+*.class
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore log files
+*.log
+
+# Ignore bin/ or out/ folder if used for compiled output
+/bin/
+/out/
+
