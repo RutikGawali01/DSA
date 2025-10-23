@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+// can be implement using Array but array has fixed size
 public class stack_using_ArrayList {
     static class stack{
         static ArrayList<Integer> list = new ArrayList<>();

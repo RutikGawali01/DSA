@@ -1,7 +1,4 @@
-
-import javax.xml.transform.Source;
-
-public class Queue_using_Array {
+public class Queue_using_array {
     static class Queue{
         static int arr[];
         static int size;
