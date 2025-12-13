@@ -1,5 +1,5 @@
 public class Balanced_BT_110{
-   
+   // height(right)-height(left) <= 1  --> this is balanced binary tree
     static class TreeNode {
         int val;
         TreeNode left;
@@ -49,6 +49,10 @@ public class Balanced_BT_110{
         if(Math.abs( ( lh - rh)) >1 ){
             return -1;
         }
+        if(lh == -1 && rh == -1 ){
+            return -1;
+        } 
+
         return 1+Math.max(lh, rh);
 
     }
