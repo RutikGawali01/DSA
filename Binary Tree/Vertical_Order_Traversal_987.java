@@ -1,11 +1,12 @@
 
 import java.util.*;
-public class Vertical_Order_Traversal_987{
-    
-    // leetcode 987
 
+public class Vertical_Order_Traversal_987 {
+
+    // leetcode 987
     // Define the structure of a tree node
     static class TreeNode {
+
         int val;
         TreeNode left;
         TreeNode right;
@@ -17,6 +18,7 @@ public class Vertical_Order_Traversal_987{
 
     // Tuple class to hold node + its vertical and level info
     static class Tuple {
+
         TreeNode node;
         int row;  // vertical (x)
         int col;  // level (y)
@@ -27,7 +29,6 @@ public class Vertical_Order_Traversal_987{
             col = _col;
         }
     }
-
 
     public static List<List<Integer>> verticalTraversal(TreeNode root) {
         // Map<vertical, Map<level, PriorityQueue of node values>>
@@ -43,17 +44,26 @@ public class Vertical_Order_Traversal_987{
             int y = tuple.col;  // level
 
             // Insert into map
-            if (!map.containsKey(x))
+            //if no entry for vertical x then create new TreeMap for that vertical 
+            if (!map.containsKey(x)) {
                 map.put(x, new TreeMap<>());
-            if (!map.get(x).containsKey(y))
+            }
+
+            // if for this x vertical , no entry for level y then create new priority queue     
+            if (!map.get(x).containsKey(y)) {
                 map.get(x).put(y, new PriorityQueue<>());
+            }
+
+            // insert into map with nodes value
             map.get(x).get(y).offer(node.val);
 
             // Add children
-            if (node.left != null)
+            if (node.left != null) {
                 q.offer(new Tuple(node.left, x - 1, y + 1));
-            if (node.right != null)
+            }
+            if (node.right != null) {
                 q.offer(new Tuple(node.right, x + 1, y + 1));
+            }
         }
 
         // Build final result
