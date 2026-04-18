@@ -49,9 +49,9 @@ public class RightView{
         }
 
         ArrayList<Integer> ans = new ArrayList<>();
-        // for(Map.Entry<Integer, Integer> entry : map.entrySet()){
-        //     ans.add(entry.getValue());
-        // }
+        for(Map.Entry<Integer, Integer> entry : map.entrySet()){
+            ans.add(entry.getValue());
+        }
 
         return ans;
 

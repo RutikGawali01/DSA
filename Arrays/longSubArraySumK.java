@@ -22,8 +22,11 @@ public  class  longSubArraySumK{
                 len = Math.max(len,(i-presum.get(rem)) );
                 
             }
+            // we wantes longest subarray sp if we got sum previously we did not updated i - bcz if updated that sum pair = it will reduce pair
+            
             if(!presum.containsKey(sum)){
                 presum.put(sum, i);
+            
             }
         }
         return  len;
