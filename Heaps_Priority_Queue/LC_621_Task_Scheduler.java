@@ -17,7 +17,7 @@ class Pair {
 public class LC_621_Task_Scheduler {
 
 
-    public static int leastInterval(char[] tasks, int n) {
+    public static int leastInterval11(char[] tasks, int n) {
         if (n == 0)
             return tasks.length;
 
@@ -74,6 +74,49 @@ public class LC_621_Task_Scheduler {
             }
         }
         return sb.length();
+    }
+
+
+
+    public static int leastInterval(char[] tasks, int n) {
+        if (n == 0)
+            return tasks.length;
+
+        int[] freq = new int[26];
+        int maxfreq = -1; // max freq of char
+        for(char ch : tasks){
+            freq[ch-'A']++;
+            maxfreq = Math.max(maxfreq , freq[ch-'A']);
+        }
+
+
+        int maxcount = 0; // no of  char equals to the max freq =
+        for(int i  = 0 ; i< 26  ; i++){
+            if(freq[i]  == maxfreq ){
+                maxcount++;
+            }
+        }
+
+        //  no of  gaps betwn most freq  task
+        int partitions = maxfreq -1; // 2
+
+
+        // emptyslots -
+        // ["A","A","A", "B","B","B"], n = 3 maxfreq - 3  - maxcount - 2
+        // initalliy - [A - - - A - - - A ] but here  maxcount - 2 - (B - 3)
+        //  [A B - - A B - - A B ] -
+        // empty slots represents total available slots after considering all the max freq  tasks
+        int emptyslots  = partitions * (n-(maxcount-1)); /// 4
+
+        //  tasks remaming after  considering all the maxfreq tasks
+        int availabletasks  = tasks.length-(maxcount*maxfreq); // 0
+
+        //    idle  tasks that  should  be added
+        int idletasks =  Math.max(0  , emptyslots-availabletasks);
+
+
+
+        return tasks.length+idletasks;
     }
 
     public static void main(String[] args) {
